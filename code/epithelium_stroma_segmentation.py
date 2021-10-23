@@ -66,14 +66,14 @@ print('Finished loading dataset...')
 # load model
 netG = networks.define_G() 
 networks.load_network(network=netG, save_path=model_path)
-netG.cuda()
+#netG.cuda()
 print('Loaded model...')
 
 
 # main loop for testing
 for i, (data, img_path) in enumerate(data_loader):
-    input_concat = Variable(data, volatile=True).cuda()
-    #input_concat = Variable(data, volatile=True)
+    #input_concat = Variable(data, volatile=True).cuda()
+    input_concat = Variable(data, volatile=True)
     fake_image = netG.forward(input_concat)
     
     image_pil = tensor2im(fake_image.data[0])  
