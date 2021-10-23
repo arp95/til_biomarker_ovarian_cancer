@@ -15,7 +15,7 @@ class TestOptions():
 
     def initialize(self):        
         self.parser.add_argument('--trained_model', type=str, default='./latest_net_G.pth', help='path to trained model')        
-        self.parser.add_argument('--image_size', type=int, default=1000, help='resize images to this size')
+        self.parser.add_argument('--image_size', type=int, default=2000, help='resize images to this size')
         self.parser.add_argument('--dataroot', type=str, default='./data/') 
         self.parser.add_argument('--results_dir', type=str, default='./results/', help='saves results here.')
         self.initialized = True
