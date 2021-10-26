@@ -91,7 +91,7 @@ for i, (data, img_path) in enumerate(data_loader):
     cnts = cnts[0] if len(cnts) == 2 else cnts[1]
     for c in cnts:
         area = cv2.contourArea(c)
-        if area < 50:
+        if area < 100:
             cv2.drawContours(image_inv, [c], -1, (0, 0, 0), -1)
 
     # filter using contour area and remove small noise
@@ -100,9 +100,12 @@ for i, (data, img_path) in enumerate(data_loader):
     cnts = cnts[0] if len(cnts) == 2 else cnts[1]
     for c in cnts:
         area = cv2.contourArea(c)
-        if area < 50:
+        if area < 100:
             cv2.drawContours(output_mask, [c], -1, (0, 0, 0), -1)
 
+    # fill the holes
+    for index in range(0, 3):
+        final_mask = cv2.dilate(output_mask.copy(), None, iterations=index+1)
     
-    cv2.imwrite(output_path + file_name[:-4] + '.png', output_mask)
+    cv2.imwrite(output_path + file_name[:-4] + '.png', final_mask)
     print('process image... %s' % img_path)
