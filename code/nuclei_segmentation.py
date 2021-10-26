@@ -10,7 +10,7 @@ import os
 import copy
 
 # parameters to update
-input_path = 'results/patches_example/'
+input_path = '../sample_patches_5000_ovarian_cancer/'
 output_path = 'results/'
 batch_size = 8
 workers = 0
@@ -19,7 +19,7 @@ model_type = 'fast'
 model_path = 'model_files/hovernet_fast_pannuke_type_tf2pytorch.tar'
 json_path = "model_files/type_info_pannuke.json"
 device = 'cpu'
-image_shape = 2000
+image_shape = 5000
 
 
 # main code
