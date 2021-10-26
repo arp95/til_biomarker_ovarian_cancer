@@ -12,7 +12,7 @@ import copy
 # parameters to update
 input_path = '../sample_patches_5000_ovarian_cancer/'
 output_path = 'results/'
-batch_size = 8
+batch_size = 1
 workers = 0
 nr_types = 6
 model_type = 'fast'
