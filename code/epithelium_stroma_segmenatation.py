@@ -20,10 +20,10 @@ from torch.utils.data import DataLoader
 
 # parameters
 model_path = "model_files/epi_seg_unet.pth"
-input_path = "results/patches/*.png"
+input_path = "../sample_patches_5000_ovarian_cancer/*.png"
 output_path = "results/epithelium_stroma_masks/"
-image_size = 2000
-input_image_size = 500
+image_size = 5000
+input_image_size = 1250
 
 
 # load model
