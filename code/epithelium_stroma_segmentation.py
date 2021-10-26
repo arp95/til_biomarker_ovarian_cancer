@@ -20,6 +20,7 @@ print("Header files loaded!")
 
 # get the options selected by user
 image_size = 2000
+input_image_size = 500
 model_path = "model_files/latest_net_G.pth"
 data_path = "results/patches"
 output_path = "results/epithelium_stroma_masks/"
@@ -57,7 +58,7 @@ def tensor2im(image_tensor, imtype=np.uint8, normalize=True):
 
 
 # normalizing the data
-data_transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),])    
+data_transform = transforms.Compose([transforms.Resize(input_image_size), transforms.ToTensor(), transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),])    
 DATASET = CustomDataLoader(root=data_path, transform=data_transform)
 data_loader = DATA.DataLoader(dataset=DATASET, batch_size=1, shuffle=False, num_workers=0)
 print('Finished loading dataset...')
@@ -102,5 +103,6 @@ for i, (data, img_path) in enumerate(data_loader):
         if area < 50:
             cv2.drawContours(output_mask, [c], -1, (0, 0, 0), -1)
 
-    cv2.imwrite(output_path + file_name[:-4] + '_epi_stroma_mask.png', output_mask)
+    
+    cv2.imwrite(output_path + file_name[:-4] + '.png', output_mask)
     print('process image... %s' % img_path)
