@@ -4,7 +4,7 @@ Using Cheng's mode for epi/stroma segmentation. Updated script for my use case.
 
 
 # header files needed
-from epi_stroma_model import *
+from unet import *
 from glob import glob
 from PIL import Image
 import numpy as np
