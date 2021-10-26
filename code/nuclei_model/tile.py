@@ -98,9 +98,9 @@ def visualize_instances_dict(
         else:
             inst_colour = (inst_rng_colors[idx]).tolist()
 
-        #if inst_colour == (0, 255, 0):
-        #    is_til = 1
-        #    color = inst_colour
+        if inst_colour == (255, 255, 0):
+            is_til = 1
+            color = inst_colour
         cv2.drawContours(overlay, [inst_contour], -1, color, line_thickness)
         cv2.fillPoly(binary_map, pts=[inst_contour], color=(255,255,255))
         contours.append([inst_contour])
@@ -426,7 +426,7 @@ class InferManager(InferManager):
         assert self.mem_usage < 1.0 and self.mem_usage > 0.0
 
         # * depend on the number of samples and their size, this may be less efficient
-        file_path_list = glob.glob(self.input_dir + "*_crop.png")
+        file_path_list = glob.glob(self.input_dir + "*.png")
         file_path_list.sort()
         assert len(file_path_list) > 0, 'Not Detected Any Files From Path'
         print(len(file_path_list))
