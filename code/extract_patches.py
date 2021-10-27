@@ -1,5 +1,7 @@
 """
-Script for extracting patches.
+Original Author: Can Koyuncu
+Modified By: Arpit Aggarwal
+Description of the file: Script for extracting patches in 40x ensuring empty regions are ignored.
 """
 
 
