@@ -47,7 +47,7 @@ def patch_extraction(wsi_path, output_path, tile_size=3000):
             cenX = (coord[0] + tile_size*slide.level_downsamples[0]//2) // slide.level_downsamples[2]
             cenY = (coord[1] + tile_size*slide.level_downsamples[0]//2) // slide.level_downsamples[2]
             mask_region = mask.crop((cenX-(mask_tile_size//2), cenY-(mask_tile_size//2), cenX+(mask_tile_size//2), cenY+(mask_tile_size//2)))
-            if ImageStat.Stat(mask_region).mean[0] > 0.5:
+            if ImageStat.Stat(mask_region).mean[0] > 0.3:
                 tile = dz.get_tile(dz_level, (i, j)).convert("RGB")
                 tile_output_path = os.path.join(output_path, filename + "_" + str(coord[0]) + '_' + str(coord[1]) + '.png')
                 tile.save(tile_output_path)
