@@ -1,6 +1,7 @@
 """ 
-Cheng's model
-Full assembly of the parts to form the complete network """
+Original Author: Cheng Lu
+Full assembly of the parts to form the complete network
+"""
 
 
 # header files

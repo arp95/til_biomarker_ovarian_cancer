@@ -1,6 +1,7 @@
 """ 
-Cheng's model
-Parts of the U-Net model """
+Original Author: Cheng Lu
+Parts of the U-Net model
+"""
 
 
 # header files needed

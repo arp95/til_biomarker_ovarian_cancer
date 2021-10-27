@@ -1,2 +1,2 @@
-# Cheng's model
+# Original Author: Cheng Lu
 from .unet_model import *
