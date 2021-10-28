@@ -14,8 +14,8 @@ print("Header files loaded...")
 
 
 # get the options selected by user
-input_path = "../sample_ovarian_cancer_data/"
-output_path = "results/patches/"
+input_path = "/mnt/rstor/CSE_BME_AXM788/data/TCGA_Ovarian Cancer/TCGA_Ovarian_Diagnostic_Path/"
+output_path = "/scratch/users/axa1399/tcga_ovarian_cancer/patches/"
 
 
 # function for extracting patches

@@ -10,7 +10,7 @@ import os
 import copy
 
 # parameters to update
-input_path = 'results/patches/'
+input_path = 'results/patches_example/'
 output_path = 'results/'
 batch_size = 1
 workers = 0
