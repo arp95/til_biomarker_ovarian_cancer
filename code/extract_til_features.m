@@ -42,7 +42,8 @@ else
 
     % get epi-TILs, epi non-TILs, stroma TILs and stroma non-TILs
     coords = {nuclei_centroids_rounded(~is_lymphocyte & epi_nuclei,:), nuclei_centroids_rounded(is_lymphocyte & ~epi_nuclei,:), nuclei_centroids_rounded(is_lymphocyte & epi_nuclei,:), nuclei_centroids_rounded(~is_lymphocyte & ~epi_nuclei,:),};
-        
+    length(coords)    
+
     %% draw centroids, graphs, convex hull for all families
     if draw_option == 1
         classes = zeros(1, length(nuclei_centroids_rounded));
