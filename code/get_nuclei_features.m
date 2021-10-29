@@ -1,3 +1,5 @@
+% Original Author: Sepideh Azarianpour
+
 function [centroids, features, feature_names] = get_nuclei_features(image, mask)
 mask=mask(:, :, 1);
 mask = logical(mask);

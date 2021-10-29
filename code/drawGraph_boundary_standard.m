@@ -1,3 +1,5 @@
+% Original Author: Sepideh Azarianpour
+
 function drawGraph_boundary_standard( coords,colors,a,r,lineWidth,markerSize,transpLine,transpMarker )
 % imshow(image,'Border','tight');
 hold on;

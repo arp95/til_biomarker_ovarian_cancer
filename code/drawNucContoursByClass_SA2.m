@@ -1,3 +1,5 @@
+% Original Author: Sepideh Azarianpour
+
 function drawNucContoursByClass_SA2( M,I,centroids, classes,colors,  tickness )
 if nargin<6
     tickness=1;

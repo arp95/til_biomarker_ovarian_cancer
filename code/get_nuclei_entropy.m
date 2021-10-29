@@ -1,3 +1,5 @@
+% Original Author: Sepideh Azarianpour
+
 function E = get_nuclei_entropy(image)
 %GETNUCENTROPY Summary of this function goes here
 J = image(:)';

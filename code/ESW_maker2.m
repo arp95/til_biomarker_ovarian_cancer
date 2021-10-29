@@ -1,3 +1,5 @@
+% Original Author: Sepideh Azarianpour
+
 function y=ESW_maker2(E,S,HQC)
 colors=[.3 , 0.1 ,0.5   ;    .9,0,.52; 0.9 .8 .8];
 

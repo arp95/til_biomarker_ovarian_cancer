@@ -1,3 +1,5 @@
+% Original Author: Sepideh Azarianpour
+
 function drawGraph_standard( coords,M,colors,lineWidth,markerSize,transpLine,transpMarker )
 %DRAWGRAPH Summary of this function goes here
 %   Detailed explanation goes here

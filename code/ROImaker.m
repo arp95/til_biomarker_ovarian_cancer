@@ -1,3 +1,5 @@
+% Original Author: Sepideh Azarianpour
+
 function y=ROImaker(I,MMMM)
 y1=I.*MMMM;
 colors=[ 0.9 .8 .8];

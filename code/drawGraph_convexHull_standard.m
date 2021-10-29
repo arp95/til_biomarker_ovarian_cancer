@@ -1,3 +1,5 @@
+% Original Author: Sepideh Azarianpour
+
 function drawGraph_convexHull_standard( coords,colors,a,r,lineWidth,markerSize,transpLine,transpMarker )
 hold on
 numGroups=length(coords);

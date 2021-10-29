@@ -1,3 +1,5 @@
+% Original Author: Sepideh Azarianpour
+
 function [Inorm H E] = normalize_staining(I, Io, beta, alpha, HERef, maxCRef)
 % normalizeStaining: Normalize the staining appearance of images
 % originating from H&E stained sections.
