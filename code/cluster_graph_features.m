@@ -1,7 +1,6 @@
 % Original Author: Sara Arabyarmohammadi
 
 function [feats,feature_list] = cluster_graph_features(edge, bounds)
-
 %1) Number of Nodes
 N = length(edge);
 feats{1} = N;
