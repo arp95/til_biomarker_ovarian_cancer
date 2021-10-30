@@ -10,20 +10,19 @@ nuclei_mask_value = sum(sum(im2double(nuclei_mask)))/(size(nuclei_mask, 1)*size(
 % classify patch as epithelial, stroma or invasive tumour front
 if (eps+epi_mask_value)/(eps+stroma_mask_value)>3
     patch = 'Epithelial';
-    ROI = epi_mask;
+    %ROI = epi_mask;
 end
 if (eps+stroma_mask_value)/(eps+epi_mask_value)>3
     patch = 'Stromal';
-    ROI = stroma_mask;
+    %ROI = stroma_mask;
 end
 if (eps+epi_mask_value)/(eps+stroma_mask_value)<3 && (eps+stroma_mask_value)/(eps+epi_mask_value)<3
     patch = 'TumourEdge';
-    ROI = stroma_mask+epi_mask;
+    %ROI = stroma_mask+epi_mask;
 end
 
-patch
 %% get til features
-[nuclei_centroids, nuclei_features, ~] = get_nuclei_features(image, ROI.*nuclei_mask);
+[nuclei_centroids, nuclei_features, ~] = get_nuclei_features(image, nuclei_mask);
 is_lymphocyte = (predict(til_model.model, nuclei_features(:,1:7))) == 1;
 nuclei_centroids_rounded = round(nuclei_centroids);
 epi_nuclei = false(length(nuclei_centroids_rounded), 1);
@@ -42,7 +41,10 @@ else
 
     % get epi-TILs, epi non-TILs, stroma TILs and stroma non-TILs
     coords = {nuclei_centroids_rounded(~is_lymphocyte & epi_nuclei,:), nuclei_centroids_rounded(is_lymphocyte & ~epi_nuclei,:), nuclei_centroids_rounded(is_lymphocyte & epi_nuclei,:), nuclei_centroids_rounded(~is_lymphocyte & ~epi_nuclei,:),};
-    length(coords)    
+    coords(1)
+    coords(2)
+    coords(3)
+    coords(4)
 
     %% draw centroids, graphs, convex hull for all families
     if draw_option == 1
