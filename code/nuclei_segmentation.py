@@ -8,6 +8,7 @@ Hovernet Model for Nuclei Segmentation: https://github.com/vqdang/hover_net
 import torch
 import os
 import copy
+torch.multiprocessing.set_sharing_strategy('file_system')
 
 # parameters to update
 input_path = '/mnt/rstor/CSE_BME_AXM788/home/axa1399/sample_patches/'
