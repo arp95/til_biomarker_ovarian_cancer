@@ -8,18 +8,17 @@ Hovernet Model for Nuclei Segmentation: https://github.com/vqdang/hover_net
 import torch
 import os
 import copy
-torch.multiprocessing.set_sharing_strategy('file_system')
 
 # parameters to update
-input_path = '/mnt/rstor/CSE_BME_AXM788/home/axa1399/sample_patches/'
-output_path = '/scratch/users/axa1399/tcga_ovarian_cancer/'
+input_path = '../ovarian_cancer_results/patches_example/'
+output_path = '../ovarian_cancer_results/'
 batch_size = 1
-workers = 16
+workers = 0
 nr_types = 6
 model_type = 'fast'
-model_path = '/mnt/rstor/CSE_BME_AXM788/home/axa1399/til_biomarker_ovarian_cancer/model_files/hovernet_fast_pannuke_type_tf2pytorch.tar'
-json_path = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/til_biomarker_ovarian_cancer/model_files/type_info_pannuke.json"
-device = 'cuda'
+model_path = '../ovarian_cancer_model_files/hovernet_fast_pannuke_type_tf2pytorch.tar'
+json_path = "../ovarian_cancer_model_files/type_info_pannuke.json"
+device = 'cpu'
 image_shape = 3000
 
 
