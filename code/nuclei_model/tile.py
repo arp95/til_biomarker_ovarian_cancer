@@ -391,7 +391,7 @@ class InferManager(object):
         saved_state_dict = convert_pytorch_checkpoint(saved_state_dict)
         net.load_state_dict(saved_state_dict, strict=True)
         if self.device == 'cuda':
-            net = torch.nn.DataParallel(net)
+            #net = torch.nn.DataParallel(net)
             net = net.to("cuda")
 
         self.run_step = lambda input_batch: infer_step(input_batch, net, self.device)
