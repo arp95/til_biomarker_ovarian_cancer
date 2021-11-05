@@ -21,9 +21,9 @@ from torch.utils.data import DataLoader
 
 
 # parameters
-model_path = "model_files/epi_seg_unet.pth"
-input_path = "results/patches/*.png"
-output_path = "results/epithelium_stroma_masks/"
+model_path = "../ovarian_cancer_model_files/epi_seg_unet.pth"
+input_path = "../ovarian_cancer_results/patches/*.png"
+output_path = "../ovarian_cancer_results/epithelium_stroma_masks/"
 image_size = 3000
 input_image_size = 750
 
@@ -62,7 +62,7 @@ def get_patch_epithelium_stroma_mask(input_path):
             output = net(x)
             output = torch.sigmoid(output)
             pred = output.detach().squeeze().cpu().numpy()
-            mask_pred = (pred>.5).astype(np.uint8)
+            mask_pred = (pred>.7).astype(np.uint8)
             pil_mask_pred = Image.fromarray(mask_pred*255)
             np_mask_pred = (np.array(pil_mask_pred)/255).astype(np.uint8)
 
