@@ -447,7 +447,7 @@ class InferManager(InferManager):
             cv2.imwrite(save_path, cv2.cvtColor(overlaid_img, cv2.COLOR_RGB2BGR))
 
             # write the binary mask after applying erosion
-            for index in range(0, 3):
+            for index in range(0, 1):
                 binary_img_eroded = cv2.erode(binary_img.copy(), None, iterations=index+1)
             save_path = "%snuclei_masks/%s.png" % (self.output_dir, img_name)
             cv2.imwrite(save_path, binary_img_eroded)
