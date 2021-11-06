@@ -10,7 +10,7 @@ import os
 import copy
 
 # parameters to update
-input_path = '../ovarian_cancer_results/patches_example/'
+input_path = '../ovarian_cancer_results/patches/'
 output_path = '../ovarian_cancer_results/'
 batch_size = 1
 workers = 0
