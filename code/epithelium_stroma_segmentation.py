@@ -21,9 +21,9 @@ from torch.utils.data import DataLoader
 
 
 # parameters
-model_path = "../ovarian_cancer_model_files/epi_seg_unet.pth"
-input_path = "../ovarian_cancer_results/patches/*.png"
-output_path = "../ovarian_cancer_results/epithelium_stroma_masks/"
+model_path = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/til_biomarkers_ovarian_cancer/model_files/epi_seg_unet.pth"
+input_path = "/scratch/users/axa1399/tcga_ovarian_cancer/patches/*.png"
+output_path = "/scratch/users/axa1399/tcga_ovarian_cancer/epithelium_stroma_masks/"
 image_size = 3000
 input_image_size = 750
 
