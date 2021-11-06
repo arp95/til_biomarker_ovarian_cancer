@@ -2,7 +2,7 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=60G
-#SBATCH --time=16-00:00:00
+#SBATCH --time=09-00:00:00
 #SBATCH --mail-user=$USER@case.edu
 #SBATCH --job-name="epitheliumStroma"
 #SBATCH --output="log.pipeline.epitheliumStroma"
