@@ -24,7 +24,7 @@ from torch.utils.data import DataLoader
 model_path = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/til_biomarker_ovarian_cancer/model_files/epi_seg_unet.pth"
 input_path = "/scratch/users/axa1399/tcga_ovarian_cancer/patches/"
 input_images_path = "/mnt/rstor/CSE_BME_AXM788/data/TCGA_Ovarian Cancer/TCGA_Ovarian_Diagnostic_Path/*"
-output_path = "/scratch/users/axa1399/tcga_ovarian_cancer/epi_stroma_masks/"
+output_path = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/epi_stroma_masks/"
 image_size = 3000
 input_image_size = 750
 
@@ -106,7 +106,7 @@ def save_patch_epithelium_stroma_mask(patch, output_path):
 # run code
 if __name__ == '__main__':
     im_paths = glob(input_images_path)
-    im_paths = im_paths[50:75]
+    im_paths = im_paths[55:85]
     for im_path in im_paths:
         image = im_path.split("/")[-1][:-4]
         patches = glob(input_path + image + "*")
