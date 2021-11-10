@@ -9,7 +9,7 @@ epi_nuclei = false(length(nuclei_centroids_rounded), 1);
 features = []
 
 % if less nuclei then empty patch, otherwise find features
-if length(nuclei_centroids_rounded) < 25
+if length(nuclei_centroids_rounded) < 40
     fprintf('Empty patch \n');
     features = zeros(892, 1);
 else
@@ -17,18 +17,18 @@ else
         epi_nuclei(c) = epi_mask(nuclei_centroids_rounded(c, 2), nuclei_centroids_rounded(c, 1));
     end
 
-    %size(nuclei_centroids_rounded)
-    %size(epi_nuclei)
+    size(nuclei_centroids_rounded)
+    size(epi_nuclei)
 
     % get epi-TILs, epi non-TILs, stroma TILs and stroma non-TILs
     coords = {nuclei_centroids_rounded(~is_lymphocyte & epi_nuclei,:), nuclei_centroids_rounded(is_lymphocyte & ~epi_nuclei,:), nuclei_centroids_rounded(is_lymphocyte & epi_nuclei,:), nuclei_centroids_rounded(~is_lymphocyte & ~epi_nuclei,:),};
-    %length(nuclei_centroids_rounded(~is_lymphocyte & epi_nuclei,:))
-    %length(nuclei_centroids_rounded(is_lymphocyte & ~epi_nuclei,:))
-    %length(nuclei_centroids_rounded(is_lymphocyte & epi_nuclei,:))
-    %length(nuclei_centroids_rounded(~is_lymphocyte & ~epi_nuclei,:))
-    if (length(nuclei_centroids_rounded(~is_lymphocyte & epi_nuclei,:)) < 5) || (length(nuclei_centroids_rounded(is_lymphocyte & ~epi_nuclei,:)) < 5) || (length(nuclei_centroids_rounded(is_lymphocyte & epi_nuclei,:)) < 5) || (length(nuclei_centroids_rounded(~is_lymphocyte & ~epi_nuclei,:)) < 5)
+    length(nuclei_centroids_rounded(~is_lymphocyte & epi_nuclei,:))
+    length(nuclei_centroids_rounded(is_lymphocyte & ~epi_nuclei,:))
+    length(nuclei_centroids_rounded(is_lymphocyte & epi_nuclei,:))
+    length(nuclei_centroids_rounded(~is_lymphocyte & ~epi_nuclei,:))
+    if (length(nuclei_centroids_rounded(~is_lymphocyte & epi_nuclei,:)) < 10) || (length(nuclei_centroids_rounded(is_lymphocyte & ~epi_nuclei,:)) < 10) || (length(nuclei_centroids_rounded(is_lymphocyte & epi_nuclei,:)) < 10) || (length(nuclei_centroids_rounded(~is_lymphocyte & ~epi_nuclei,:)) < 10)
         % not useful patch for feature extraction
-        fprintf("Not enough interplay features!");
+        fprintf("Not enough nuclei for extracting graph interplay features!");
         features = zeros(892, 1);
     else
         % extract graph interplay features
