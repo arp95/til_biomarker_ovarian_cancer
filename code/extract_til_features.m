@@ -17,9 +17,6 @@ else
         epi_nuclei(c) = epi_mask(nuclei_centroids_rounded(c, 2), nuclei_centroids_rounded(c, 1));
     end
 
-    size(nuclei_centroids_rounded)
-    size(epi_nuclei)
-
     % get epi-TILs, epi non-TILs, stroma TILs and stroma non-TILs
     coords = {nuclei_centroids_rounded(~is_lymphocyte & epi_nuclei,:), nuclei_centroids_rounded(is_lymphocyte & ~epi_nuclei,:), nuclei_centroids_rounded(is_lymphocyte & epi_nuclei,:), nuclei_centroids_rounded(~is_lymphocyte & ~epi_nuclei,:),};
     length(nuclei_centroids_rounded(~is_lymphocyte & epi_nuclei,:))
@@ -34,7 +31,6 @@ else
         % extract graph interplay features
         [features_all_together, all_descriptions] = extract_graph_interplay_features(coords)
         features = features_all_together
-        length(features_all_together)
     end
 
     %% draw centroids, graphs, convex hull for all families
