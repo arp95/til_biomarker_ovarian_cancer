@@ -19,10 +19,6 @@ else
 
     % get epi-TILs, epi non-TILs, stroma TILs and stroma non-TILs
     coords = {nuclei_centroids_rounded(~is_lymphocyte & epi_nuclei,:), nuclei_centroids_rounded(is_lymphocyte & ~epi_nuclei,:), nuclei_centroids_rounded(is_lymphocyte & epi_nuclei,:), nuclei_centroids_rounded(~is_lymphocyte & ~epi_nuclei,:),};
-    length(nuclei_centroids_rounded(~is_lymphocyte & epi_nuclei,:))
-    length(nuclei_centroids_rounded(is_lymphocyte & ~epi_nuclei,:))
-    length(nuclei_centroids_rounded(is_lymphocyte & epi_nuclei,:))
-    length(nuclei_centroids_rounded(~is_lymphocyte & ~epi_nuclei,:))
     if (length(nuclei_centroids_rounded(~is_lymphocyte & epi_nuclei,:)) < 10) || (length(nuclei_centroids_rounded(is_lymphocyte & ~epi_nuclei,:)) < 10) || (length(nuclei_centroids_rounded(is_lymphocyte & epi_nuclei,:)) < 10) || (length(nuclei_centroids_rounded(~is_lymphocyte & ~epi_nuclei,:)) < 10)
         % not useful patch for feature extraction
         fprintf("Not enough nuclei for extracting graph interplay features!");
