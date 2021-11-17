@@ -35,18 +35,20 @@ for index = 1:size(patches)
     histoqc_mask_path = histoqc_masks_dir + filename
     results_image_path = char(results_images_dir + filename)
 
-    %% read patches, epi/stroma mask, nuclei mask, HistoQC mask, TIL model
-    image = im2double(imread(patches_dir + filename));
-    epi_stroma_mask = im2double(imread(epi_stroma_mask_path))
-    nuclei_mask = im2double(imread(nuclei_mask_path));
-    histoqc_mask = (ones(3000, 3000));
-    epi_mask = (epi_stroma_mask.*histoqc_mask);
-    stroma_mask = ((1-epi_stroma_mask).*histoqc_mask);
-    nuclei_mask = (nuclei_mask.*histoqc_mask);
-    til_model = load(til_model_path);
+    if isfile(nuclei_mask_path)
+        %% read patches, epi/stroma mask, nuclei mask, HistoQC mask, TIL model
+        image = im2double(imread(patches_dir + filename));
+        epi_stroma_mask = im2double(imread(epi_stroma_mask_path))
+        nuclei_mask = im2double(imread(nuclei_mask_path));
+        histoqc_mask = (ones(3000, 3000));
+        epi_mask = (epi_stroma_mask.*histoqc_mask);
+        stroma_mask = ((1-epi_stroma_mask).*histoqc_mask);
+        nuclei_mask = (nuclei_mask.*histoqc_mask);
+        til_model = load(til_model_path);
 
-    %% run til pipeline
-    [features] = extract_til_features(image, nuclei_mask, histoqc_mask, epi_mask, stroma_mask, til_model, draw_option, results_image_path);
-    filename = extractBefore(filename, ".png")
-    writematrix(features, results_features_dir + filename + '.csv')
+        %% run til pipeline
+        [features] = extract_til_features(image, nuclei_mask, histoqc_mask, epi_mask, stroma_mask, til_model, draw_option, results_image_path);
+        filename = extractBefore(filename, ".png")
+        writematrix(features, results_features_dir + filename + '.csv')
+    end
 end
