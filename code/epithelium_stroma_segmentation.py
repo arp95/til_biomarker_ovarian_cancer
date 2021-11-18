@@ -106,7 +106,7 @@ def save_patch_epithelium_stroma_mask(patch, output_path):
 # run code
 if __name__ == '__main__':
     im_paths = sorted(glob(input_images_path))
-    im_paths = im_paths[:25]
+    im_paths = [im_paths[102]]
     for im_path in im_paths:
         image = im_path.split("/")[-1][:-4]
         patches = glob(input_path + image + "*")
