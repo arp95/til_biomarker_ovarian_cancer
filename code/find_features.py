@@ -39,6 +39,7 @@ for file in files:
             current_features = []
             current_features_float = []
             sum = 0
+            flag = -1
             with open(results_features_file, newline='') as csvfile:
                 spamreader = csv.reader(csvfile)
                 for row in spamreader:
