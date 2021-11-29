@@ -18,7 +18,7 @@ addpath(genpath('pwd'))
 %% hard-coded paths on HPC
 patches_dir = "/scratch/users/axa1399/tcga_ovarian_cancer/patches/"
 patches = dir(fullfile(patches_dir, '*.png'));
-epi_stroma_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/epi_stroma_masks/"
+epi_stroma_masks_dir = "/scratch/users/axa1399/tcga_ovarian_cancer/epi_stroma_masks/"
 nuclei_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/nuclei_masks/"
 histoqc_masks_dir = ""
 results_images_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/results/images/"
