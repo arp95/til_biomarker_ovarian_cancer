@@ -5,7 +5,7 @@ function [features]=extract_til_features(image, nuclei_mask, histoqc_mask, epi_m
 [nuclei_centroids, nuclei_features, ~] = get_nuclei_features(image, nuclei_mask);
 nuclei_centroids_rounded = round(nuclei_centroids);
 epi_nuclei = false(length(nuclei_centroids_rounded), 1);
-features = []
+features = [];
 
 % if less nuclei then empty patch, otherwise find features
 if length(nuclei_centroids_rounded) < 40
@@ -25,8 +25,8 @@ else
         features = zeros(892, 1);
     else
         % extract graph interplay features
-        [features_all_together, all_descriptions] = extract_graph_interplay_features(coords)
-        features = features_all_together
+        [features_all_together, all_descriptions] = extract_graph_interplay_features(coords);
+        features = features_all_together;
     end
 
     %% draw centroids, graphs, convex hull for all families
@@ -40,6 +40,6 @@ else
         V40 = (V30 + image)/2;
         V41 = ROImaker(V40, epi_mask+stroma_mask);
         drawNucContoursByClass_SA2(nuclei_mask, V41, nuclei_centroids, classes, colors);
-        saveas(gcf, [results_file, '.png'])
+        saveas(gcf, [results_file, '.png']);
     end
 end
