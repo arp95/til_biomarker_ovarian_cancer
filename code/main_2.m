@@ -28,7 +28,7 @@ draw_option = 0;
 
 
 %% get til features
-for index = 29001:30000
+for index = 33001:34000
     filename = patches(index).name;
     epi_stroma_mask_path = epi_stroma_masks_dir + filename;
     nuclei_mask_path = nuclei_masks_dir + filename;
