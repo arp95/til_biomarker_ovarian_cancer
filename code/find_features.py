@@ -13,8 +13,8 @@ import numpy as np
 
 # parameters to update
 files_path = "./files.csv"
-results_features_path = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/results/features/"
-results_final_features_path = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/results/final_features/"
+results_features_path = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/results_new/features/"
+results_final_features_path = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/results_new/final_features/"
 
 # find the images for finding their corresponding features
 flag = -1
