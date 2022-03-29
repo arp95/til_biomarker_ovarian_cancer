@@ -2,7 +2,7 @@
 
 function [features]=extract_til_features(image, nuclei_mask, histoqc_mask, epi_mask, stroma_mask, til_model, draw_option, results_file)
 %% get til features
-[nuclei_centroids, nuclei_features, ~] = get_nuclei_features(image, nuclei_mask);
+[nuclei_centroids, nuclei_features, nuclei_feature_names, nuclei_bboxes] = get_nuclei_features(image, nuclei_mask);
 nuclei_centroids_rounded = round(nuclei_centroids);
 epi_nuclei = false(length(nuclei_centroids_rounded), 1);
 features = [];
@@ -18,18 +18,27 @@ else
     end
 
     % get epi-TILs, epi non-TILs, stroma TILs and stroma non-TILs
-    coords = {nuclei_centroids_rounded(~is_lymphocyte & epi_nuclei,:), nuclei_centroids_rounded(is_lymphocyte & ~epi_nuclei,:), nuclei_centroids_rounded(is_lymphocyte & epi_nuclei,:), nuclei_centroids_rounded(~is_lymphocyte & ~epi_nuclei,:),};
-    if (length(nuclei_centroids_rounded(~is_lymphocyte & epi_nuclei,:)) < 10) || (length(nuclei_centroids_rounded(is_lymphocyte & ~epi_nuclei,:)) < 10) || (length(nuclei_centroids_rounded(is_lymphocyte & epi_nuclei,:)) < 10) || (length(nuclei_centroids_rounded(~is_lymphocyte & ~epi_nuclei,:)) < 10)
-        % not useful patch for feature extraction
-        fprintf("Not enough nuclei for extracting graph interplay features!");
-        features = zeros(892, 1);
-    else
-        % extract graph interplay features
-        [features_all_together, all_descriptions] = extract_graph_interplay_features(coords);
-        features = features_all_together;
-    end
+    %coords = {nuclei_centroids_rounded(~is_lymphocyte & epi_nuclei,:), nuclei_centroids_rounded(is_lymphocyte & ~epi_nuclei,:), nuclei_centroids_rounded(is_lymphocyte & epi_nuclei,:), nuclei_centroids_rounded(~is_lymphocyte & ~epi_nuclei,:),};
+    %if (length(nuclei_centroids_rounded(~is_lymphocyte & epi_nuclei,:)) < 10) || (length(nuclei_centroids_rounded(is_lymphocyte & ~epi_nuclei,:)) < 10) || (length(nuclei_centroids_rounded(is_lymphocyte & epi_nuclei,:)) < 10) || (length(nuclei_centroids_rounded(~is_lymphocyte & ~epi_nuclei,:)) < 10)
+    %    % not useful patch for feature extraction
+    %    fprintf("Not enough nuclei for extracting graph interplay features!");
+    %    features = zeros(892, 1);
+    %else
+    %    % extract graph interplay features
+    %    [features_all_together, all_descriptions] = extract_graph_interplay_features(coords);
+    %    features = features_all_together;
+    %end
 
     %% draw centroids, graphs, convex hull for all families
+    til_mask = zeros(3000, 3000);
+    for c=1:length(nuclei_bboxes)
+        if is_lymphocyte(c) & ~epi_nuclei(c)
+            bbox = nuclei_bboxes(c, :);
+            til_mask(bbox(2) : bbox(2) + bbox(4), bbox(1) : bbox(1) + bbox(3), :) = 1;
+        end 
+    end
+    imwrite(til_mask, results_file);
+
     if draw_option == 1
         classes = zeros(1, length(nuclei_centroids_rounded));
         classes(is_lymphocyte & ~epi_nuclei) = 1;

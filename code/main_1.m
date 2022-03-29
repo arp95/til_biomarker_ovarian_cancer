@@ -5,30 +5,30 @@ clear
 addpath(genpath('pwd'))
 
 %% hard-coded paths
-%patches_dir = "../../ovarian_cancer_results/patches_final/";
+%patches_dir = "../../ovarian_cancer_results/patches_sample/";
 %patches = dir(fullfile(patches_dir, '*.png'));
 %epi_stroma_masks_dir = "../../ovarian_cancer_results/epi_stroma_masks_final/";
 %nuclei_masks_dir = "../../ovarian_cancer_results/nuclei_masks_final/";
 %histoqc_masks_dir = "";
-%results_images_dir = "./";
+%results_images_dir = "../../ovarian_cancer_results/til_masks_sample/";
 %results_features_dir = "./";
 %til_model_path = "../../ovarian_cancer_model_files/lymp_svm_matlab_wsi.mat";
-%draw_option = 1;
+%draw_option = 0;
 
 %% hard-coded paths on HPC
-patches_dir = "/scratch/users/axa1399/tcga_ovarian_cancer/patches/";
+patches_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/patches/patches/";
 patches = dir(fullfile(patches_dir, '*.png'));
 epi_stroma_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/epi_stroma_masks/";
 nuclei_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/nuclei_masks/";
 histoqc_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/histoqc_masks/";
-results_images_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/results_new/images/";
+results_images_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/til_masks/";
 results_features_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/results_new/features/";
 til_model_path = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/til_biomarker_ovarian_cancer/model_files/lymp_svm_matlab_wsi.mat";
 draw_option = 0;
 
 
 %% get til features
-for index = 44001:45019
+for index = 1:12000
     filename = patches(index).name;
     epi_stroma_mask_path = epi_stroma_masks_dir + filename;
     nuclei_mask_path = nuclei_masks_dir + filename;
@@ -48,7 +48,7 @@ for index = 44001:45019
 
         %% run til pipeline
         [features] = extract_til_features(image, nuclei_mask, histoqc_mask, epi_mask, stroma_mask, til_model, draw_option, results_image_path);
-        filename = extractBefore(filename, ".png");
-        writematrix(features, results_features_dir + filename + '.csv');
+        %filename = extractBefore(filename, ".png");
+        %writematrix(features, results_features_dir + filename + '.csv');
     end
 end
