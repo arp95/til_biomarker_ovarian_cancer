@@ -8,7 +8,7 @@ epi_nuclei = false(length(nuclei_centroids_rounded), 1);
 features = [];
 
 % if less nuclei then empty patch, otherwise find features
-if length(nuclei_centroids_rounded) < 2
+if length(nuclei_centroids_rounded) < 1
     fprintf('Empty patch \n');
     features = zeros(892, 1);
 else
@@ -31,11 +31,15 @@ else
 
     %% draw centroids, graphs, convex hull for all families
     til_mask = zeros(3000, 3000);
-    for c=1:length(nuclei_bboxes)
-        if is_lymphocyte(c) & ~epi_nuclei(c)
-            bbox = nuclei_bboxes(c, :);
-            til_mask(bbox(2) : bbox(2) + bbox(4), bbox(1) : bbox(1) + bbox(3), :) = 1;
-        end 
+    if length(epi_nuclei) > 0
+        if length(is_lymphocyte) > 0
+            for c=1:length(nuclei_centroids_rounded)
+                if is_lymphocyte(c) & ~epi_nuclei(c)
+                    bbox = nuclei_bboxes(c, :);
+                    til_mask(bbox(2) : bbox(2) + bbox(4), bbox(1) : bbox(1) + bbox(3), :) = 1;
+                end 
+            end
+        end
     end
     imwrite(til_mask, results_file);
 
