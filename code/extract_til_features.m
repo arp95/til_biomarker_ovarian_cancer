@@ -8,7 +8,7 @@ epi_nuclei = false(length(nuclei_centroids_rounded), 1);
 features = [];
 
 % if less nuclei then empty patch, otherwise find features
-if length(nuclei_centroids_rounded) < 0
+if length(nuclei_centroids_rounded) < 2
     fprintf('Empty patch \n');
     features = zeros(892, 1);
 else
