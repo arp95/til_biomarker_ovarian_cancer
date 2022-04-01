@@ -8,9 +8,11 @@ epi_nuclei = false(length(nuclei_centroids_rounded), 1);
 features = [];
 
 % if less nuclei then empty patch, otherwise find features
-if length(nuclei_centroids_rounded) < 1
+if length(nuclei_centroids_rounded) < 10
     fprintf('Empty patch \n');
     features = zeros(892, 1);
+    til_mask = zeros(3000, 3000);
+    imwrite(til_mask, results_file);
 else
     is_lymphocyte = (predict(til_model.model, nuclei_features(:,1:7))) == 1;
     for c=1:length(nuclei_centroids_rounded)
