@@ -15,7 +15,7 @@ patches_dir = "/scratch/users/axa1399/tcga_cervix_cancer/patches/"
 histoqc_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/histoqc_mask_output/"
 results_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_cervix_cancer/histoqc_masks/"
 patches = glob.glob(patches_dir + "*")
-patches = patches[15000:20000]
+patches = patches[20000:25000]
 
 
 # extract histoqc masks
@@ -30,6 +30,7 @@ for patch in patches:
     index1 = int(image_split[len(image_split)-2])
     index2 = int(image_split[len(image_split)-1])
 
+    print(histoqc_masks_dir + full_image_name + "_mask_use.png")
     mask = cv2.imread(histoqc_masks_dir + full_image_name + "_mask_use.png")
     index1 = int(index1 / 32.0)
     index2 = int(index2 / 32.0)
