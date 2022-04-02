@@ -4,8 +4,8 @@
 #SBATCH --mem-per-cpu=30G
 #SBATCH --time=20:00:00
 #SBATCH --mail-user=$USER@case.edu
-#SBATCH --job-name="histoqc11"
-#SBATCH --output="log.pipeline.histoqc11"
+#SBATCH --job-name="histoqc12"
+#SBATCH --output="log.pipeline.histoqc12"
 
 
 #=========loading libraries==========#
