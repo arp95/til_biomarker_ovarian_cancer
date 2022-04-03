@@ -4,8 +4,8 @@
 #SBATCH --mem-per-cpu=30G
 #SBATCH --time=20:00:00
 #SBATCH --mail-user=$USER@case.edu
-#SBATCH --job-name="nntil5"
-#SBATCH --output="log.pipeline.nntil5"
+#SBATCH --job-name="nntil6"
+#SBATCH --output="log.pipeline.nntil6"
 
 
 #=========loading libraries==========#
