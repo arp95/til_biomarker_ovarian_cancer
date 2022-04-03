@@ -14,7 +14,7 @@ print("Header files loaded...")
 til_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/til_masks/"
 results_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/til_masks_new_10/"
 patches = glob.glob(til_dir + "*")
-patches = patches[5000:10000]
+patches = patches[10000:15000]
 
 
 # extract til masks
