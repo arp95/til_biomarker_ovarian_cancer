@@ -12,7 +12,7 @@ print("Header files loaded...")
 
 # get the options selected by user
 til_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/til_masks/"
-results_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/til_masks_new_25/"
+results_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/til_masks_new_10/"
 patches = glob.glob(til_dir + "*")
 patches = patches[:5000]
 
