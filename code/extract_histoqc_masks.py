@@ -11,11 +11,11 @@ print("Header files loaded...")
 
 
 # get the options selected by user
-patches_dir = "/scratch/users/axa1399/tcga_cervix_cancer/patches/"
+patches_dir = "/scratch/users/axa1399/upmc_ovarian_cancer/patches/"
 histoqc_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/histoqc_mask_output/"
-results_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_cervix_cancer/histoqc_masks/"
+results_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/histoqc_masks/"
 patches = glob.glob(patches_dir + "*")
-patches = patches[10000:15000]
+patches = patches[:5000]
 
 
 # extract histoqc masks
