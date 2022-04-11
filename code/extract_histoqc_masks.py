@@ -15,7 +15,7 @@ patches_dir = "/scratch/users/axa1399/upmc_ovarian_cancer/new_patches/"
 histoqc_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/histoqc_mask_output/"
 results_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/histoqc_masks/"
 patches = glob.glob(patches_dir + "*")
-patches = patches[8000:]
+patches = patches[2000:5000]
 
 
 # extract histoqc masks
