@@ -16,31 +16,33 @@ addpath(genpath('pwd'))
 %draw_option = 0;
 
 %% hard-coded paths on HPC
-patches_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/patches/patches/";
+patches_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/macrophage_patches/patches_HE/";
 patches = dir(fullfile(patches_dir, '*.png'));
-epi_stroma_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/epi_stroma_masks/";
-nuclei_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/nuclei_masks/";
-histoqc_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/histoqc_masks/";
-results_images_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/til_masks/";
-results_features_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/results_new/features/";
+%epi_stroma_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/epi_stroma_masks/";
+nuclei_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/macrophage_patches/nuclei_masks/";
+%histoqc_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/histoqc_masks/";
+results_images_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/macrophage_patches/til_masks/";
+%results_features_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/results_new/features/";
 til_model_path = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/til_biomarker_ovarian_cancer/model_files/lymp_svm_matlab_wsi.mat";
 draw_option = 0;
 
 
 %% get til features
-for index = 1:7000
+for index = 1:500
     filename = patches(index).name;
-    epi_stroma_mask_path = epi_stroma_masks_dir + filename;
+    %epi_stroma_mask_path = epi_stroma_masks_dir + filename;
     nuclei_mask_path = nuclei_masks_dir + filename;
-    histoqc_mask_path = histoqc_masks_dir + filename;
+    %histoqc_mask_path = histoqc_masks_dir + filename;
     results_image_path = char(results_images_dir + filename);
 
     if isfile(nuclei_mask_path)
         %% read patches, epi/stroma mask, nuclei mask, HistoQC mask, TIL model
         image = im2double(imread(patches_dir + filename));
-        epi_stroma_mask = im2double(imread(epi_stroma_mask_path));
+        %epi_stroma_mask = im2double(imread(epi_stroma_mask_path));
+        epi_stroma_mask = ones(2000, 2000);
         nuclei_mask = im2double(imread(nuclei_mask_path));
-        histoqc_mask = im2double(imread(histoqc_mask_path));
+        %histoqc_mask = im2double(imread(histoqc_mask_path));
+        histoqc_mask = ones(2000, 2000);
         epi_mask = (epi_stroma_mask.*histoqc_mask);
         stroma_mask = ((1-epi_stroma_mask).*histoqc_mask);
         nuclei_mask = (nuclei_mask.*histoqc_mask);

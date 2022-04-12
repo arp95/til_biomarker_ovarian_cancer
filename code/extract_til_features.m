@@ -11,7 +11,7 @@ features = [];
 if length(nuclei_centroids_rounded) < 10
     fprintf('Empty patch \n');
     features = zeros(892, 1);
-    til_mask = zeros(3000, 3000);
+    til_mask = zeros(2000, 2000);
     imwrite(til_mask, results_file);
 else
     is_lymphocyte = (predict(til_model.model, nuclei_features(:,1:7))) == 1;
@@ -32,11 +32,11 @@ else
     %end
 
     %% draw centroids, graphs, convex hull for all families
-    til_mask = zeros(3000, 3000);
+    til_mask = zeros(2000, 2000);
     if length(epi_nuclei) > 0
         if length(is_lymphocyte) > 0
             for c=1:length(nuclei_centroids_rounded)
-                if is_lymphocyte(c) & ~epi_nuclei(c)
+                if is_lymphocyte(c)
                     bbox = nuclei_bboxes(c, :);
                     til_mask(bbox(2) : bbox(2) + bbox(4), bbox(1) : bbox(1) + bbox(3), :) = 1;
                 end 
