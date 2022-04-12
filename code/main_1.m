@@ -41,6 +41,7 @@ for index = 1:500
         %epi_stroma_mask = im2double(imread(epi_stroma_mask_path));
         epi_stroma_mask = ones(2000, 2000);
         nuclei_mask = im2double(imread(nuclei_mask_path));
+        nuclei_mask = nuclei_mask(1:2000, 1:2000);
         %histoqc_mask = im2double(imread(histoqc_mask_path));
         histoqc_mask = ones(2000, 2000);
         epi_mask = (epi_stroma_mask.*histoqc_mask);
