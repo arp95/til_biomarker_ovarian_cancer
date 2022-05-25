@@ -11,11 +11,11 @@ print("Header files loaded...")
 
 
 # get the options selected by user
-patches_dir = "/scratch/users/axa1399/upmc_ovarian_cancer/new_patches/"
-histoqc_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/histoqc_mask_output/"
-results_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/histoqc_masks/"
+patches_dir = "/scratch/users/sxa786/uh_endometrium_cancer/patches/"
+histoqc_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/histoqc_mask_output_uh_endometrial/"
+results_dir = "/scratch/users/sxa786/uh_endometrium_cancer/histoqc_masks/"
 patches = glob.glob(patches_dir + "*")
-patches = patches[9000:]
+patches = patches[:10000]
 
 
 # extract histoqc masks
@@ -30,8 +30,8 @@ for patch in patches:
     index1 = int(image_split[len(image_split)-2])
     index2 = int(image_split[len(image_split)-1])
 
-    print(histoqc_masks_dir + full_image_name + "_mask_use.png")
-    mask = cv2.imread(histoqc_masks_dir + full_image_name + "_mask_use.png")
+    print(histoqc_masks_dir + full_image_name + ".tif_mask_use.png")
+    mask = cv2.imread(histoqc_masks_dir + full_image_name + ".tif_mask_use.png")
     index1 = int(index1 / 32.0)
     index2 = int(index2 / 32.0)
     mask = mask[index2:index2+94, index1:index1+94]

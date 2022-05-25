@@ -2,10 +2,10 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=30G
-#SBATCH --time=20:00:00
+#SBATCH --time=02-05:00:00
 #SBATCH --mail-user=$USER@case.edu
-#SBATCH --job-name="histoqc4"
-#SBATCH --output="log.pipeline.histoqc4"
+#SBATCH --job-name="histoqc1"
+#SBATCH --output="log.pipeline.histoqc1"
 
 
 #=========loading libraries==========#
