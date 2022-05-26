@@ -15,7 +15,7 @@ patches_dir = "/scratch/users/sxa786/uh_endometrium_cancer/patches/"
 histoqc_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/histoqc_mask_output_uh_endometrial/"
 results_dir = "/scratch/users/sxa786/uh_endometrium_cancer/histoqc_masks/"
 patches = glob.glob(patches_dir + "*")
-patches = patches[70000:80000]
+patches = patches[80000:90000]
 
 
 # extract histoqc masks
